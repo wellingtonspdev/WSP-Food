@@ -1,7 +1,7 @@
 # WSP Food - App de Pedidos
 
 <p align="center">
-  <img src="./src/assets/logo_WSP_FOOD_Sem_fundo.svg" width="200" alt="WSP Food Logo" />
+  <img src="./src/assets/Logo_WSP_food_sf.png" width="180" alt="WSP Food Logo" />
 </p>
 
 O **WSP Food** é um aplicativo mobile de demonstração e estudo para cardápios e pedidos rápidos, projetado com **React Native** e **Expo**. O aplicativo permite ao usuário escolher entre opções de comidas (hambúrgueres) e bebidas utilizando o componente nativo `Picker`, enquanto fornece visuais imersivos do produto selecionado. Quando a escolha é feita, o app mostra uma tela interativa de revisão do pedido com animações modernas.
@@ -54,5 +54,4 @@ O **WSP Food** é um aplicativo mobile de demonstração e estudo para cardápio
 - **`/src/components`**: Componentes genéricos de IU do sistema.
 
 ## 📚 Notas do Desenvolvedor
-Dentro do código em `app/(tabs)/index.tsx`, vários comentários foram acoplados indicando onde criamos o estado da interface com `useState`, mapeando as transições de modal, e estruturando cálculos de subtotal para futuras manutenções. 
-# WSP-Food
+Dentro do código em `app/(tabs)/index.tsx`, vários comentários foram acoplados indicando onde criamos o estado da interface com `useState`, mapeando as transições de modal, e estruturando cálculos de subtotal para futuras manutenções.
