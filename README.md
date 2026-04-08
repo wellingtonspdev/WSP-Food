@@ -25,7 +25,7 @@ O **WSP Food** é um aplicativo mobile de demonstração e estudo para cardápio
 1. **Clone o repositório**
    Primeiro, baixe o projeto para sua máquina e entre na pasta:
    ```bash
-   git clone <URL_DO_SEU_REPOSITORIO>
+   git clone https://github.com/wellingtonsdev/WSP-Food.git
    cd wsp-food
    ```
 
