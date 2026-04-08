@@ -1,56 +1,58 @@
-# WSP Food - App de Pedidos
-
 <p align="center">
-  <img src="./src/assets/Logo_WSP_food_sf.png" width="180" alt="WSP Food Logo" />
+  <img src="./src/assets/logo_WSP_FOOD_Sem_fundo.svg" width="180" alt="WSP Food Logo" />
 </p>
 
-O **WSP Food** é um aplicativo mobile de demonstração e estudo para cardápios e pedidos rápidos, projetado com **React Native** e **Expo**. O aplicativo permite ao usuário escolher entre opções de comidas (hambúrgueres) e bebidas utilizando o componente nativo `Picker`, enquanto fornece visuais imersivos do produto selecionado. Quando a escolha é feita, o app mostra uma tela interativa de revisão do pedido com animações modernas.
+> 🎓 Projeto desenvolvido como atividade prática para a disciplina de **Programação de Dispositivos Móveis**, do 4º semestre de Desenvolvimento de Software Multiplataforma (**DSM**) da **FATEC**.
 
-## 📱 Principais Funcionalidades
+<p align="center">
+  <img src="./assets/marketing/01-tela-inicial.png" width="250" />
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="./assets/marketing/02-revisao-pedido.png" width="250" />
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="./assets/marketing/03-pedido-confirmado.png" width="250" />
+</p>
 
-- **Selecionador Interativo:** Uso do `@react-native-picker/picker` para escolher rapidamente entre comida e bebida.
-- **Valores Dinâmicos:** Cálculo e atualização em tempo real do preço total de acordo com as escolhas.
-- **Design Elegante de Dark Theme:** Componentização visual com gradientes utilizando `expo-linear-gradient` e UI/UX polido para retenção.
-- **Micro-Interações e Modals:** Modal fluido para confirmação da compra, exibindo o resumo do pedido do usuário e finalização simulada para a cozinha.
+O **WSP Food** é um aplicativo mobile focado em cardápios e pedidos rápidos, projetado com **React Native** e **Expo**. O grande desafio proposto nesta atividade foi integrar o componente nativo `Picker` para coordenar seleções, porém optou-se por aplicar padrões de arquiteturas do mercado como o *Single Source of Truth* para garantir estabilidade do estado local.
 
-## 🚀 Como Rodar o Projeto do Zero
+## 📱 Principais Funcionalidades & UX
+
+- **Selecionador Interativo:** Uso performático do `@react-native-picker/picker` para escolher rapidamente entre combos de comida e bebida.
+- **Micro-Interações e Modals (Pre-fetching):** Modais fluidos para confirmação que executam a mudança de contexto sem atrasos via timers curtos (agilizando a UX vis-à-vis chamadas de back-end).
+- **Design Glassmorphism Moderno:** Interface escura/neon, estilizada nativamente com cores absolutas e sobreposições. Componentização visual com `expo-linear-gradient`.
+- **Acessibilidade Inspecionada (A11y):** Inclusão de roles (`accessibilityRole`), labels e regiões de foco (`accessibilityLiveRegion`) que tornam a experiência lida de ponta-a-ponta por *Screen Readers*.
+
+## 💡 Decisões Arquiteturais (State Management)
+
+Um dos destaques deste repositório encontra-se no tratamento dos Estados:
+Em vez de depender de múltiplos retornos assíncronos a nível de tela (`useState` do Preço Final, `useEffect` mudando strings a cada re-mount), o app atua com **Derivação de Valores on-the-fly**. A cada renderização, a verdadeira fonte da verdade cruza dinamicamente o valor do lanche + o valor da bebida na view. O Preço não é um estado, **é um derivado**. Resultado: Risco Zero de falhas na sincronia das informações de pagamento.
+
+## 🚀 Como Rodar o Projeto
 
 ### Pré-requisitos
-- Ter o **Node.js** instalado (versão 18+ recomendada)
-- Instalar a CLI do Expo rodando: `npm install -g expo-cli`
-- Ter um emulador configurado no seu ambiente (Android Studio para android ou Xcode para iOS) ou então baixar o aplicativo **Expo Go** em seu smartphone (Android/iOS)
+- Node.js (v18+).
+- Expo CLI (`npm install -g expo-cli`).
+- Emulador de sua preferência (Android Studio / Xcode) ou o app **Expo Go** instalado no seu telefone.
 
-### Passo a Passo
+### Servindo o WSP Food Localmente
 
-1. **Clone o repositório**
-   Primeiro, baixe o projeto para sua máquina e entre na pasta:
+1. **Clone o repositório:**
    ```bash
-   git clone https://github.com/wellingtonsdev/WSP-Food.git
+   git clone https://github.com/wellingtonspdev/WSP-Food.git
+   cd WSP-Food
    ```
 
-2. **Instale as Dependências**
-   Rode o comando abaixo para instalar todas as bibliotecas necessárias para o projeto, incluindo React Navigation e Expo Linear Gradient:
+2. **Instale as dependências:**
    ```bash
    npm install
    ```
 
-3. **Inicie o Servidor de Desenvolvimento**
-   Inicie o React Native Packager usando o Expo:
+3. **Inicie o Empacotador Expo:**
    ```bash
    npx expo start
    ```
 
-4. **Abra o App**
-   Após rodar o comando, você verá um **QR Code** no terminal.
-   - **Para rodar no smartphone real:** Abra o app **Expo Go** e escaneie o QR code (no iOS pode ser direto pela câmera do celular)
-   - **Para rodar em um Emulador Local:** Pressione a tecla `a` no terminal para rodar o emulador Android ou a `i` para o simulador iOS.
+4. **Testando:**  
+   Abra o **Expo Go** e escaneie o QRCode que aparece no seu terminal. Alternativamente, pressione `a` no terminal para lançar na sua instância do Android Studio, ou `i` para o simulador do iOS.
 
-## 🛠 Arquitetura de Pastas
-
-- **`/app`**: Contém o roteamento principal do `expo-router`. Onde nossas páginas como `index.tsx` ficam vivas.
-- **`/src/assets`**: Imagens gerais do aplicativo e do app WSP Food.
-- **`/src/data`**: Dados brutos dos produtos. Listas simulando o que retornaríamos de uma API backend real.
-- **`/src/components`**: Componentes genéricos de IU do sistema.
-
-## 📚 Notas do Desenvolvedor
-Dentro do código em `app/(tabs)/index.tsx`, vários comentários foram acoplados indicando onde criamos o estado da interface com `useState`, mapeando as transições de modal, e estruturando cálculos de subtotal para futuras manutenções.
+---
+Feito com ☕ e código - WSP Food (Fatec DSM).

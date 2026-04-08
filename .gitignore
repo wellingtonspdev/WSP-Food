@@ -43,3 +43,12 @@ yarn-error.*
 
 # temp/logs
 *.log
+
+# Automação/Playwright Tools e Social
+screenshot.mjs
+gerador-prints.mjs
+playwright-report/
+test-results/
+linkedin_post.md
+relatorio_tecnico.md
+
